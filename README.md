@@ -26,7 +26,7 @@ Dependencies
 2) Install the dependencies found in `environment.yml` with `conda env create -f environment.yml`.
 4) Run demos (below):
     * If running the Jupyter Notebook, simply choose the conda environment as the kernel and run the cells. Run the first cell only once to revert back to the root scPhere folder. Make sure that the working directory is this directory.
-    * If running the scripts, `cd` into the rootscPhere folder, then run `export PYTHONPATH="${PYTHONPATH}:./"` and finally use `python ./example/script/demo_monocytes.py` in the terminal.
+    * If running the scripts, `cd` into the root scPhere folder, then run `export PYTHONPATH="${PYTHONPATH}:./"` and finally use `python ./example/script/demo_monocytes.py` in the terminal.
 
 ## Running scPhere
 
