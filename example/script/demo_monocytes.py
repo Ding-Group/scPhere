@@ -1,12 +1,11 @@
-export PYTHONPATH="${PYTHONPATH}:./"
 import numpy as np
 import torch
 from torch import nn
 import pandas as pd
 from matplotlib import pyplot as plt
-from scphere.util.util import read_mtx
-from scphere.util.trainer import Trainer
 from scphere.model.vae import SCPHERE
+from scphere.util.trainer import Trainer
+from scphere.util.util import read_mtx
 from scphere.util.plot import plot_trace
 from example.script.plot_latents import plot_latents
 
