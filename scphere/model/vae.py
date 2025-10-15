@@ -62,7 +62,8 @@ class SCPHERE(nn.Module):
                 observation_dist='nb',
                 batch_invariant=False, 
                 activation=nn.ELU(),
-                observation_dispersion='gene'
+                observation_dispersion='gene',
+                device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
                 ):
         super().__init__()
         self.n_input_feature = n_gene
@@ -74,6 +75,7 @@ class SCPHERE(nn.Module):
         self.batch_invariant = batch_invariant
         self.activation = activation
         self.observation_dispersion = observation_dispersion
+        self.device = device
 
         if self.latent_dist == 'vmf':
             self.z_dim += 1
@@ -162,6 +164,8 @@ class SCPHERE(nn.Module):
             #                                 nn.Linear(self.decoder_layer[-1], self.n_input_feature),
             #                                 nn.Softplus()
             #                                 )
+        
+        self.to(self.device)
         print("-------- Built SCPHERE model --------")
 
     def forward(self, x, batch):

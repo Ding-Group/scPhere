@@ -49,7 +49,7 @@ class Trainer(object):
             self.optimizer.zero_grad()
 
             x_mb, y_mb = self.x.next_batch(self.mb_size)
-            x_mb, y_mb = torch.tensor(x_mb), torch.tensor(y_mb)
+            x_mb, y_mb = torch.tensor(x_mb).to(self.model.device), torch.tensor(y_mb).to(self.model.device)
 
             self.model.forward(x_mb, y_mb)
 
@@ -64,9 +64,9 @@ class Trainer(object):
             self.optimizer.step()
 
             if (iter_i % 50) == 0:
-                ll = self.model.log_likelihood.detach().numpy()
-                kl = self.model.kl.detach().numpy()
-                elbo = loss.detach().numpy()
+                ll = self.model.log_likelihood.detach().cpu().numpy()
+                kl = self.model.kl.detach().cpu().numpy()
+                elbo = loss.detach().cpu().numpy()
                 self.status['log_likelihood'].append(ll)
                 self.status['kl_divergence'].append(kl)
                 self.status['elbo'].append(elbo)
